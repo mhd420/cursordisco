@@ -17,7 +17,11 @@ interface ServerToClient {
   update: (userId: number, pos: [number, number]) => void;
 }
 
-const io = new Server<ClientToServer, ServerToClient>();
+const io = new Server<ClientToServer, ServerToClient>({
+  cors: {
+    origin: true,
+  }
+});
 
 const players = new Map<string, Player>();
 
